@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Vector Tiles in Leaflet 1.0.1</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" href="//unpkg.com/leaflet@1.0.1/dist/leaflet.css" />
+		<style type="text/css">
+			html, body, #map {
+				margin: 0;
+				height: 100%;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="map"></div>
+		<script src="//unpkg.com/leaflet@1.0.1/dist/leaflet.js"></script>
+		<script src="//ivansanchez.github.io/Leaflet.VectorGrid/dist/Leaflet.VectorGrid.bundled.js"></script>
+		<script>
+					var map = L.map('map');
+
+// 		var cartodbAttribution = '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, &copy; <a href="http://cartodb.com/attributions">CartoDB</a>';
+//
+// 		var positron = L.tileLayer('http://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}.png', {
+// 			attribution: cartodbAttribution,
+// 			opacity: 0.5
+// 		}).addTo(map);
+
+
+		var url = 'http://demo.fonts.cat:8080/data/osm2vectortiles/{z}/{x}/{y}.pbf';
+
+		var vectorTileOptions = {
+			rendererFactory: L.canvas.tile,
+			attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+			vectorTileLayerStyles: {
+
+				water: {
+					weight: 0,
+					fillColor: '#9bc2c4',
+					fillOpacity: 1,
+					fill: true,
+					stroke: false
+				},
+
+				admin: function(properties, zoom) {
+					var level = properties.admin_level;
+					var weight = 1;
+					if (level == 2) {weight = 4;}
+					return {
+						weight: weight,
+						color: '#cf52d3',
+						dashArray: '2, 6',
+						fill: false,
+// 						lineCap: 'butt',
+						lineJoin: 'miter'
+					}
+				},
+
+				country_label: [],
+				marine_label: [],
+				state_label: [],
+				place_label: [],
+				waterway_label: [],
+				landuse: [],
+				landuse_overlay: [],
+				road: [],
+				poi_label: [],
+				waterway: [],
+				aeroway: [],
+				tunnel: [],
+				bridge: [],
+				barrier_line: [],
+				building: [],
+				road_label: [],
+				housenum_label: [],
+
+			},
+		};
+
+
+		var pbfLayer = L.vectorGrid.protobuf(url, vectorTileOptions).addTo(map);
+
+		map.setView({ lat: 41.38288, lng: 2.17680 }, 1);
+		</script>
+	</body>
+</html>
