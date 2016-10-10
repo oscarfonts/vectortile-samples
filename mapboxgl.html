@@ -18,10 +18,43 @@
 		<script>
 			var map = new mapboxgl.Map({
 				container: 'map',
-				style:  'http://demo.fonts.cat:8080/styles/bright-v9.json',
+				style: 'http://demo.fonts.cat:8080/styles/bright-v9.json',
         		hash: true
 			});
+
 			map.addControl(new mapboxgl.Navigation());
+
+			map.on('load', function () {
+				map.addSource('tmb', {
+					"type": "vector",
+					"scheme": "tms",
+					"tiles": ["http://vertex.fonts.cat:8080/geoserver/gwc/service/tms/1.0.0/TMB%3ALINIES_METRO@EPSG%3A900913@pbf/{z}/{x}/{y}.pbf"]
+				});
+				map.addLayer({
+					"id": "metrolines",
+					"type": "line",
+					"source": "tmb",
+					"source-layer": "LINIES_METRO",
+					"paint": {
+						"line-color": {
+							"property": "COLOR_LINIA",
+							"type": "categorical",
+							"stops": [
+								['CE1126', '#CE1126'],
+								['93248F', '#93248F'],
+								['1EB53A', '#1EB53A'],
+								['F7A30E', '#F7A30E'],
+								['00A6D6', '#00A6D6'],
+								['004C38', '#004C38'],
+								['005A97', '#005A97'],
+								['89B94C', '#89B94C'],
+								['FB712B', '#FB712B']
+							]
+						},
+						"line-width": 5
+					}
+				});
+			});
 		</script>
 	</body>
 </html>
