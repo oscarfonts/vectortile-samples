@@ -18,8 +18,8 @@
 		<script>
 			var map = new mapboxgl.Map({
 				container: 'map',
-				style: 'http://vertex.fonts.cat:8081/styles/bright-v9.json',
-        		hash: true
+				style: 'bt5m_nice.json',
+    		hash: true
 			});
 
 			map.addControl(new mapboxgl.Navigation());
@@ -28,7 +28,7 @@
 				map.addSource('tmb', {
 					"type": "vector",
 					"scheme": "tms",
-					"tiles": ["http://vertex.fonts.cat:8080/geoserver/gwc/service/tms/1.0.0/TMB%3ALINIES_METRO@EPSG%3A900913@pbf/{z}/{x}/{y}.pbf"]
+					"tiles": ["http://demo.fonts.cat/geoserver/gwc/service/tms/1.0.0/TMB%3ALINIES_METRO@EPSG%3A900913@pbf/{z}/{x}/{y}.pbf"]
 				});
 				map.addLayer({
 					"id": "metrolines",

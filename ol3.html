@@ -40,7 +40,7 @@
 							format: new ol.format.MVT(),
 							tileGrid: ol.tilegrid.createXYZ({maxZoom: 22}),
 							tilePixelRatio: 16,
-							url: 'http://vertex.fonts.cat:8081/data/osm2vectortiles/{z}/{x}/{y}.pbf'
+							url: 'http://demo.fonts.cat:8001/data/osm2vectortiles/{z}/{x}/{y}.pbf'
 						}),
 						style: createMapboxStreetsV6Style()
 					}),
@@ -50,7 +50,7 @@
 							format: new ol.format.MVT(),
 							tileGrid: ol.tilegrid.createXYZ({maxZoom: 22}),
 							tilePixelRatio: 1,
-							url: 'http://vertex.fonts.cat:8080/geoserver/gwc/service/tms/1.0.0/TMB%3ALINIES_METRO@EPSG%3A900913@pbf/{z}/{x}/{-y}.pbf'
+							url: 'http://demo.fonts.cat/geoserver/gwc/service/tms/1.0.0/TMB%3ALINIES_METRO@EPSG%3A900913@pbf/{z}/{x}/{-y}.pbf'
 						}),
 						style: styleFunction
 					})
