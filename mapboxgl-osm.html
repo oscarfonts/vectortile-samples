@@ -4,7 +4,7 @@
 		<title>Vector Tiles in Mapbox GL JS 0.25.1</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<link rel="stylesheet" href="//api.mapbox.com/mapbox-gl-js/v0.25.1/mapbox-gl.css" />
+		<link href='https://api.mapbox.com/mapbox-gl-js/v0.34.0/mapbox-gl.css' rel='stylesheet' />
 		<style type="text/css">
 			html, body, #map {
 				margin: 0;
@@ -15,48 +15,15 @@
 	<body>
 		<div id="map"></div>
 		<script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=fetch,Promise"></script>
-		<script src="//api.mapbox.com/mapbox-gl-js/v0.25.1/mapbox-gl.js"></script>
+		<script src='https://api.mapbox.com/mapbox-gl-js/v0.34.0/mapbox-gl.js'></script>
 		<script>
 			var map = new mapboxgl.Map({
 				container: 'map',
-				style: 'http://demo.fonts.cat:8001/styles/basic-v9.json',
+			    style: 'gl-styles/positron.json',
     		hash: true
 			});
 
-			map.addControl(new mapboxgl.Navigation());
-
 			map.on('load', function () {
-				map.addSource('tmb', {
-					"type": "vector",
-					"scheme": "tms",
-					"tiles": ["http://demo.fonts.cat/geoserver/gwc/service/tms/1.0.0/TMB%3ALINIES_METRO@EPSG%3A900913@pbf/{z}/{x}/{y}.pbf"]
-				});
-				/*
-				map.addLayer({
-					"id": "metrolines",
-					"type": "line",
-					"source": "tmb",
-					"source-layer": "LINIES_METRO",
-					"paint": {
-						"line-color": {
-							"property": "COLOR_LINIA",
-							"type": "categorical",
-							"stops": [
-								['CE1126', '#CE1126'],
-								['93248F', '#93248F'],
-								['1EB53A', '#1EB53A'],
-								['F7A30E', '#F7A30E'],
-								['00A6D6', '#00A6D6'],
-								['004C38', '#004C38'],
-								['005A97', '#005A97'],
-								['89B94C', '#89B94C'],
-								['FB712B', '#FB712B']
-							]
-						},
-						"line-width": 5
-					}
-				});
-				*/
 				fetch('linies_metro.geojson').then(function(response) {
 			  		response.json().then(function(data) {
 			  		    map.addSource("tmb-geojson", {
