@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>MapboxGL + OpenMapTiles + Metro</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://api.mapbox.com/mapbox-gl-js/v0.34.0/mapbox-gl.css' rel='stylesheet'/>
+    <style type="text/css">
+        html, body, #map {
+            margin: 0;
+            height: 100%;
+        }
+
+        #menu {
+            position: absolute;
+            bottom: 30px;
+            right: 10px;
+            background: #fff;
+            padding: 10px;
+            font-family: 'Open Sans', sans-serif;
+        }
+
+        .menuItem {
+            padding-top: 5px;
+            padding-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+<div id="map"></div>
+<div id='menu'></div>
+<script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=fetch,Promise"></script>
+<script src='https://api.mapbox.com/mapbox-gl-js/v0.34.0/mapbox-gl.js'></script>
+<script>
+  var map = new mapboxgl.Map({
+    container: 'map',
+    style: 'styles/positron.json',
+    hash: true
+  });
+
+  var nav = new mapboxgl.NavigationControl();
+  map.addControl(nav, 'top-right');
+
+  var overlays = [{
+    name: "TRAMS_LINIA",
+    style: {
+      "id": "linia_style",
+      "type": "line",
+      "source": "TRAMS_LINIA",
+      "layout": {
+        "line-join": "round",
+        "line-cap": "round"
+      },
+      "paint": {
+        "line-color": {
+          "property": "COLOR_LINIA",
+          "type": "categorical",
+          "stops": [
+            ['CE1126', '#CE1126'],
+            ['93248F', '#93248F'],
+            ['1EB53A', '#1EB53A'],
+            ['F7A30E', '#F7A30E'],
+            ['00A6D6', '#00A6D6'],
+            ['004C38', '#004C38'],
+            ['005A97', '#005A97'],
+            ['89B94C', '#89B94C'],
+            ['FB712B', '#FB712B']
+          ]
+        },
+        "line-width": 5
+      }
+    }
+  },{
+    name: "EST_LINIA_CENTRAL",
+    style: {
+      "id": "estacio_style",
+      "type": "symbol",
+      "source": "EST_LINIA_CENTRAL",
+      "layout": {
+        "icon-image": "{icon}-15",
+        "text-field": "{NOM_ESTACIO}",
+        "text-font": ["Open Sans Semibold", "Arial Unicode MS Bold"],
+        "text-offset": [0, 0.6],
+        "text-anchor": "top"
+      },
+      "paint": {
+
+      }
+
+    }
+  }];
+
+  function addOverlays() {
+    for(var i in overlays) {
+      var layer = overlays[i];
+      addLayer(layer);
+    }
+  }
+
+  function addLayer(layer) {
+    if (layer.data) {
+      map.addSource(layer.name, {
+        "type": "geojson",
+        "data": layer.data
+      });
+      map.addLayer(layer.style);
+    }
+  }
+
+  map.on('load', function () {
+    for(var i in overlays) {
+      var layer = overlays[i];
+      fetch('data/'+layer.name+'.geojson').then(function (response) {
+        response.json().then(function (data) {
+          layer.data = data;
+         addLayer(layer);
+        });
+      });
+    }
+
+    fetch('styles/index.json').then(function (response) {
+      response.json().then(function (styles) {
+        var layerList = document.getElementById('menu');
+        for (var style in styles) {
+          var div = document.createElement("div");
+          div.className = "menuItem";
+          layerList.appendChild(div);
+
+          var input = document.createElement("input");
+          input.name = "rtoggle";
+          input.type = "radio";
+          input.id = style;
+          input.value = style;
+          input.checked = Object.keys(styles)[0] == style;
+          input.onclick = switchLayer;
+          div.appendChild(input);
+
+          var label = document.createElement("label");
+          label.htmlFor = style;
+          label.innerText = styles[style];
+          div.appendChild(label);
+        }
+      });
+    });
+  });
+
+  map.on('style.load', function () {
+    addOverlays();
+  });
+
+  function switchLayer(layer) {
+    var layerId = layer.target.id;
+    map.setStyle('styles/' + layerId + '.json');
+  }
+
+</script>
+</body>
+</html>

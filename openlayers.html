@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Vector Tiles in OpenLayers 3.18.2</title>
+		<title>OpenLayers + OpenMapTiles + Metro</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/ol3/3.18.2/ol-debug.css" />
+		<link rel="stylesheet" href="https://openlayers.org/en/v4.0.1/css/ol.css" type="text/css">
 		<style type="text/css">
 			html, body, #map {
 				margin: 0;
@@ -15,8 +15,8 @@
 	<body>
 		<div id="map"></div>
 		<script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=fetch,Promise"></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/ol3/3.20.1/ol.js"></script>
-		<script src="olms.js"></script>
+		<script src="https://openlayers.org/en/v4.0.1/build/ol.js" type="text/javascript"></script>
+		<script src="lib/olms.js"></script>
 		<script>
 			var metroStyleCache = {};
 
@@ -39,7 +39,7 @@
 					format: new ol.format.MVT(),
 					tileGrid: ol.tilegrid.createXYZ({tileSize: 512, maxZoom: 14}),
 					tilePixelRatio: 8,
-					url: 'http://demo.fonts.cat:8001/data/osm2vectortiles/{z}/{x}/{y}.pbf'
+					url: 'http://demo.fonts.cat:8001/data/openmaptiles/{z}/{x}/{y}.pbf'
 				})
 			});
 
@@ -63,7 +63,7 @@
 				})
 			});
 
-			fetch('http://demo.fonts.cat:8001/styles/basic-v9.json').then(function(response) {
+			fetch('styles/positron.json').then(function(response) {
 			  response.json().then(function(glStyle) {
 			    // olms stands for: https://github.com/boundlessgeo/ol-mapbox-style
 			    olms.applyStyle(osmLayer, glStyle, 'mapbox').then(function() {

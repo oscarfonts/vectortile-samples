@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="889"
+   height="888.99585"
+   id="svg2"
+   sodipodi:version="0.32"
+   inkscape:version="0.46"
+   version="1.0"
+   sodipodi:docname="Rodalies de Catalunya.svg"
+   inkscape:output_extension="org.inkscape.output.svg.inkscape">
+  <defs
+     id="defs4">
+    <inkscape:perspective
+       sodipodi:type="inkscape:persp3d"
+       inkscape:vp_x="0 : 526.18109 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_z="744.09448 : 526.18109 : 1"
+       inkscape:persp3d-origin="372.04724 : 350.78739 : 1"
+       id="perspective10" />
+    <inkscape:perspective
+       id="perspective2447"
+       inkscape:persp3d-origin="372.04724 : 350.78739 : 1"
+       inkscape:vp_z="744.09448 : 526.18109 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 526.18109 : 1"
+       sodipodi:type="inkscape:persp3d" />
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     gridtolerance="10000"
+     guidetolerance="10"
+     objecttolerance="10"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.62654959"
+     inkscape:cx="444.5"
+     inkscape:cy="444.49791"
+     inkscape:document-units="px"
+     inkscape:current-layer="capa1"
+     showgrid="false"
+     inkscape:window-width="1280"
+     inkscape:window-height="752"
+     inkscape:window-x="0"
+     inkscape:window-y="0" />
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Capa 1"
+     inkscape:groupmode="layer"
+     id="capa1"
+     transform="translate(408.00188,-78.365626)">
+    <g
+       id="g3229"
+       transform="matrix(2.5112932,0,0,2.5112932,-55.159364,-790.20009)">
+      <rect
+         y="345.86392"
+         x="-140.50232"
+         height="353.99924"
+         width="354.00089"
+         id="rect2453"
+         style="opacity:1;fill:#f76013;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      <path
+         sodipodi:nodetypes="ccccccccccccccccccc"
+         transform="translate(-140.50232,345.86392)"
+         id="path3227"
+         d="M 141.30069,67.597041 L 253.08922,67.820618 C 286.3254,69.213536 327.26001,74.391975 332.70384,114.3492 L 333.03084,119.5043 L 333.09526,132.47412 C 333.11995,134.85335 333.05331,136.30135 332.82334,138.21152 C 330.20865,158.38607 318.49481,171.58288 299.59324,178.49126 C 323.92031,187.43857 330.14827,195.49829 333.012,213.91936 L 333.4217,218.42297 L 334.91842,265.46273 C 335.12698,268.91544 338.42098,270.98724 341.40215,271.05215 L 341.40215,277.08873 L 271.86969,277.31231 C 268.64814,266.09395 268.47727,247.07943 267.8453,229.24325 C 266.8208,209.67032 253.55913,204.60071 236.54451,203.97904 L 210.83315,204.20262 L 210.60957,276.86516 L 141.52427,277.31231 L 141.30069,67.597041 z"
+         style="fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#ffffff;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+      <path
+         sodipodi:nodetypes="ccccc"
+         transform="translate(-140.50232,345.86392)"
+         id="path3225"
+         d="M 210.3742,116.59868 L 210.24731,158.21674 L 244.37919,158.21674 C 279.79976,157.85747 279.75777,116.78865 245.64804,116.72557 L 210.3742,116.59868 z"
+         style="fill:#f76013;fill-opacity:1;fill-rule:evenodd;stroke:#f76013;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+    </g>
+  </g>
+</svg>

@@ -1,32 +1,31 @@
 {
   "version": 8,
-  "name": "Positron",
+  "name": "Fiord Color",
   "metadata": {
     "mapbox:autocomposite": false,
     "mapbox:type": "template",
     "mapbox:groups": {
       "b6371a3f2f5a9932464fa3867530a2e5": {
         "name": "Transportation",
-        "collapsed": false
+        "collapsed": true
       },
       "a14c9607bc7954ba1df7205bf660433f": {
-        "name": "Boundaries"
+        "name": "Boundaries",
+        "collapsed": true
       },
       "101da9f13b64a08fa4b6ac1168e89e5f": {
         "name": "Places",
-        "collapsed": false
+        "collapsed": true
       }
     },
-    "openmaptiles:version": "3.x",
-    "openmaptiles:mapbox:owner": "openmaptiles",
-    "openmaptiles:mapbox:source:url": "mapbox://openmaptiles.4qljc88t"
+    "openmaptiles:version": "3.x"
   },
   "center": [
-    10.184401828277089,
-    -1.1368683772161603e-13
+    2.15,
+    41.38
   ],
-  "zoom": 0.8902641636539237,
-  "bearing": 0,
+  "zoom": 12,
+  "bearing": -45,
   "pitch": 0,
   "sources": {
     "openmaptiles": {
@@ -34,31 +33,14 @@
       "url": "http://demo.fonts.cat:8001/data/openmaptiles.json"
     }
   },
-  "sprite": "https://openmaptiles.github.io/positron-gl-style/sprite",
+  "sprite": "https://openmaptiles.github.io/fiord-color-gl-style/sprite",
   "glyphs": "https://free.tilehosting.com/fonts/{fontstack}/{range}.pbf?key={key}",
   "layers": [
     {
       "id": "background",
       "type": "background",
       "paint": {
-        "background-color": "rgb(242,243,240)"
-      }
-    },
-    {
-      "id": "park",
-      "type": "fill",
-      "source": "openmaptiles",
-      "source-layer": "park",
-      "filter": [
-        "==",
-        "$type",
-        "Polygon"
-      ],
-      "layout": {
-        "visibility": "visible"
-      },
-      "paint": {
-        "fill-color": "rgb(230, 233, 229)"
+        "background-color": "#45516E"
       }
     },
     {
@@ -75,21 +57,8 @@
         "visibility": "visible"
       },
       "paint": {
-        "fill-color": "rgb(194, 200, 202)",
-        "fill-antialias": true,
-        "fill-outline-color": {
-          "base": 1,
-          "stops": [
-            [
-              0,
-              "hsla(180, 6%, 63%, 0.82)"
-            ],
-            [
-              22,
-              "hsla(180, 6%, 63%, 0.18)"
-            ]
-          ]
-        }
+        "fill-color": "#38435C",
+        "fill-antialias": false
       }
     },
     {
@@ -115,47 +84,8 @@
         "visibility": "visible"
       },
       "paint": {
-        "fill-color": "hsl(0, 0%, 98%)",
-        "fill-opacity": 0.7
-      }
-    },
-    {
-      "id": "landcover_glacier",
-      "type": "fill",
-      "source": "openmaptiles",
-      "source-layer": "landcover",
-      "maxzoom": 8,
-      "filter": [
-        "all",
-        [
-          "==",
-          "$type",
-          "Polygon"
-        ],
-        [
-          "==",
-          "subclass",
-          "glacier"
-        ]
-      ],
-      "layout": {
-        "visibility": "visible"
-      },
-      "paint": {
-        "fill-color": "hsl(0, 0%, 98%)",
-        "fill-opacity": {
-          "base": 1,
-          "stops": [
-            [
-              0,
-              1
-            ],
-            [
-              8,
-              0.5
-            ]
-          ]
-        }
+        "fill-color": "hsl(232, 33%, 34%)",
+        "fill-opacity": 0.4
       }
     },
     {
@@ -173,7 +103,7 @@
         ],
         [
           "==",
-          "class",
+          "subclass",
           "residential"
         ]
       ],
@@ -220,12 +150,12 @@
         "visibility": "visible"
       },
       "paint": {
-        "fill-color": "rgb(220,224,220)",
+        "fill-color": "hsla(232, 18%, 30%, 0.57)",
         "fill-opacity": {
           "base": 1,
           "stops": [
             [
-              8,
+              9,
               0
             ],
             [
@@ -234,6 +164,43 @@
             ]
           ]
         }
+      }
+    },
+    {
+      "id": "park",
+      "type": "fill",
+      "source": "openmaptiles",
+      "source-layer": "park",
+      "filter": [
+        "==",
+        "$type",
+        "Polygon"
+      ],
+      "layout": {
+        "visibility": "visible"
+      },
+      "paint": {
+        "fill-color": "hsl(204, 17%, 35%)",
+        "fill-opacity": 0.3
+      }
+    },
+    {
+      "id": "park_outline",
+      "type": "line",
+      "source": "openmaptiles",
+      "source-layer": "park",
+      "filter": [
+        "==",
+        "$type",
+        "Polygon"
+      ],
+      "layout": {},
+      "paint": {
+        "line-dasharray": [
+          2,
+          2
+        ],
+        "line-color": "hsl(205, 49%, 31%)"
       }
     },
     {
@@ -250,7 +217,8 @@
         "visibility": "visible"
       },
       "paint": {
-        "line-color": "hsl(195, 17%, 78%)"
+        "line-color": "hsl(232, 23%, 28%)",
+        "line-opacity": 0.6
       }
     },
     {
@@ -270,16 +238,17 @@
         "symbol-spacing": 500,
         "text-font": [
           "Metropolis Medium Italic",
-          "Klokantech Noto Sans Italic",
+          "Klokantech Noto Sans Regular",
           "Klokantech Noto Sans CJK Regular"
         ],
-        "text-size": 12
+        "text-size": 12,
+        "visibility": "visible"
       },
       "paint": {
-        "text-color": "rgb(157,169,177)",
-        "text-halo-color": "rgb(242,243,240)",
+        "text-color": "hsl(223, 21%, 52%)",
+        "text-halo-color": "hsl(232, 5%, 19%)",
         "text-halo-width": 1,
-        "text-halo-blur": 1
+        "text-halo-blur": 0
       }
     },
     {
@@ -294,9 +263,9 @@
         "Polygon"
       ],
       "paint": {
-        "fill-color": "rgb(234, 234, 229)",
-        "fill-outline-color": "rgb(219, 219, 218)",
-        "fill-antialias": true
+        "fill-color": "hsla(232, 47%, 18%, 0.65)",
+        "fill-antialias": false,
+        "fill-opacity": 0.25
       }
     },
     {
@@ -335,7 +304,7 @@
         "visibility": "visible"
       },
       "paint": {
-        "line-color": "rgb(213, 213, 213)",
+        "line-color": "#3C4357",
         "line-width": {
           "base": 1.4,
           "stops": [
@@ -392,7 +361,7 @@
         "visibility": "visible"
       },
       "paint": {
-        "line-color": "rgb(234,234,234)",
+        "line-color": "hsl(224, 18%, 21%)",
         "line-width": {
           "base": 1.4,
           "stops": [
@@ -439,21 +408,25 @@
         "visibility": "visible"
       },
       "paint": {
-        "line-color": "rgb(234, 234, 234)",
+        "line-color": "hsl(211, 29%, 38%)",
         "line-width": {
           "base": 1.2,
           "stops": [
             [
-              13,
-              1
+              12,
+              0.5
             ],
             [
               20,
-              10
+              4
             ]
           ]
         },
-        "line-opacity": 0.9
+        "line-opacity": 1,
+        "line-dasharray": [
+          2,
+          2
+        ]
       }
     },
     {
@@ -486,7 +459,7 @@
         "visibility": "visible"
       },
       "paint": {
-        "line-color": "hsl(0, 0%, 88%)",
+        "line-color": "hsl(224, 22%, 45%)",
         "line-width": {
           "base": 1.55,
           "stops": [
@@ -534,7 +507,7 @@
         "visibility": "visible"
       },
       "paint": {
-        "line-color": "rgb(213, 213, 213)",
+        "line-color": "hsl(224, 22%, 45%)",
         "line-dasharray": [
           12,
           0
@@ -585,7 +558,7 @@
         "visibility": "visible"
       },
       "paint": {
-        "line-color": "#fff",
+        "line-color": "#3C4357",
         "line-width": {
           "base": 1.3,
           "stops": [
@@ -632,8 +605,9 @@
         "visibility": "visible"
       },
       "paint": {
-        "line-color": "hsla(0, 0%, 85%, 0.69)",
-        "line-width": 2
+        "line-color": "#3D4355",
+        "line-width": 2,
+        "line-opacity": 0.6
       }
     },
     {
@@ -673,7 +647,7 @@
         "visibility": "visible"
       },
       "paint": {
-        "line-color": "rgb(213, 213, 213)",
+        "line-color": "hsl(224, 22%, 45%)",
         "line-width": {
           "base": 1.4,
           "stops": [
@@ -744,7 +718,7 @@
             ],
             [
               6,
-              "#fff"
+              "hsl(224, 20%, 29%)"
             ]
           ]
         },
@@ -795,7 +769,7 @@
         "visibility": "visible"
       },
       "paint": {
-        "line-color": "hsla(0, 0%, 85%, 0.53)",
+        "line-color": "hsla(239, 45%, 69%, 0.2)",
         "line-width": {
           "base": 1.4,
           "stops": [
@@ -845,16 +819,24 @@
         "line-join": "round"
       },
       "paint": {
-        "line-color": "#dddddd",
+        "line-color": "hsl(200, 65%, 11%)",
         "line-width": 3
       }
     },
     {
       "id": "railway_service_dashline",
-      "type": "line",
       "metadata": {
         "mapbox:group": "b6371a3f2f5a9932464fa3867530a2e5"
       },
+      "paint": {
+        "line-color": "hsl(193, 63%, 26%)",
+        "line-width": 2,
+        "line-dasharray": [
+          3,
+          3
+        ]
+      },
+      "type": "line",
       "source": "openmaptiles",
       "source-layer": "transportation",
       "minzoom": 16,
@@ -866,26 +848,21 @@
           "LineString"
         ],
         [
-          "==",
-          "class",
-          "rail"
-        ],
-        [
-          "has",
-          "service"
+          "all",
+          [
+            "==",
+            "class",
+            "rail"
+          ],
+          [
+            "has",
+            "service"
+          ]
         ]
       ],
       "layout": {
         "visibility": "visible",
         "line-join": "round"
-      },
-      "paint": {
-        "line-color": "#fafafa",
-        "line-width": 2,
-        "line-dasharray": [
-          3,
-          3
-        ]
       }
     },
     {
@@ -922,7 +899,7 @@
         "line-join": "round"
       },
       "paint": {
-        "line-color": "#dddddd",
+        "line-color": "hsl(200, 10%, 18%)",
         "line-width": {
           "base": 1.3,
           "stops": [
@@ -943,15 +920,14 @@
       "metadata": {
         "mapbox:group": "b6371a3f2f5a9932464fa3867530a2e5"
       },
-      "ref": "railway",
       "paint": {
-        "line-color": "#fafafa",
+        "line-color": "hsl(224, 20%, 41%)",
         "line-width": {
           "base": 1.3,
           "stops": [
             [
               16,
-              2
+              1.5
             ],
             [
               20,
@@ -963,17 +939,11 @@
           3,
           3
         ]
-      }
-    },
-    {
-      "id": "highway_motorway_bridge_casing",
-      "type": "line",
-      "metadata": {
-        "mapbox:group": "b6371a3f2f5a9932464fa3867530a2e5"
       },
+      "type": "line",
       "source": "openmaptiles",
       "source-layer": "transportation",
-      "minzoom": 6,
+      "minzoom": 13,
       "filter": [
         "all",
         [
@@ -984,114 +954,19 @@
         [
           "all",
           [
-            "==",
-            "brunnel",
-            "bridge"
+            "!has",
+            "service"
           ],
           [
             "==",
             "class",
-            "motorway"
+            "rail"
           ]
         ]
       ],
       "layout": {
-        "line-cap": "butt",
-        "line-join": "miter",
-        "visibility": "visible"
-      },
-      "paint": {
-        "line-color": "rgb(213, 213, 213)",
-        "line-width": {
-          "base": 1.4,
-          "stops": [
-            [
-              5.8,
-              0
-            ],
-            [
-              6,
-              5
-            ],
-            [
-              20,
-              45
-            ]
-          ]
-        },
-        "line-dasharray": [
-          2,
-          0
-        ],
-        "line-opacity": 1
-      }
-    },
-    {
-      "id": "highway_motorway_bridge_inner",
-      "type": "line",
-      "metadata": {
-        "mapbox:group": "b6371a3f2f5a9932464fa3867530a2e5"
-      },
-      "source": "openmaptiles",
-      "source-layer": "transportation",
-      "minzoom": 6,
-      "filter": [
-        "all",
-        [
-          "==",
-          "$type",
-          "LineString"
-        ],
-        [
-          "all",
-          [
-            "==",
-            "brunnel",
-            "bridge"
-          ],
-          [
-            "==",
-            "class",
-            "motorway"
-          ]
-        ]
-      ],
-      "layout": {
-        "line-cap": "round",
-        "line-join": "round",
-        "visibility": "visible"
-      },
-      "paint": {
-        "line-color": {
-          "base": 1,
-          "stops": [
-            [
-              5.8,
-              "hsla(0, 0%, 85%, 0.53)"
-            ],
-            [
-              6,
-              "#fff"
-            ]
-          ]
-        },
-        "line-width": {
-          "base": 1.4,
-          "stops": [
-            [
-              4,
-              2
-            ],
-            [
-              6,
-              1.3
-            ],
-            [
-              20,
-              30
-            ]
-          ]
-        }
+        "visibility": "visible",
+        "line-join": "round"
       }
     },
     {
@@ -1132,18 +1007,19 @@
         "text-field": "{name}"
       },
       "paint": {
-        "text-color": "#bbb",
-        "text-halo-color": "#fff",
+        "text-color": "hsl(223, 31%, 61%)",
+        "text-halo-color": "hsl(232, 9%, 23%)",
         "text-translate": [
           0,
           0
         ],
         "text-halo-width": 2,
-        "text-halo-blur": 1
+        "text-halo-blur": 0,
+        "text-opacity": 1
       }
     },
     {
-      "id": "highway_name_motorway",
+      "id": "highway_ref",
       "type": "symbol",
       "metadata": {
         "mapbox:group": "b6371a3f2f5a9932464fa3867530a2e5"
@@ -1172,20 +1048,21 @@
           "Klokantech Noto Sans CJK Regular"
         ],
         "symbol-placement": "line",
-        "visibility": "visible",
+        "visibility": "none",
         "text-rotation-alignment": "viewport",
         "text-pitch-alignment": "viewport",
         "text-field": "{ref}"
       },
       "paint": {
-        "text-color": "rgb(117, 129, 145)",
-        "text-halo-color": "hsl(0, 0%, 100%)",
+        "text-color": "hsl(215, 57%, 77%)",
+        "text-halo-color": "hsl(209, 64%, 19%)",
         "text-translate": [
           0,
           2
         ],
         "text-halo-width": 1,
-        "text-halo-blur": 1
+        "text-halo-blur": 1,
+        "text-opacity": 1
       }
     },
     {
@@ -1207,7 +1084,7 @@
         "visibility": "visible"
       },
       "paint": {
-        "line-color": "rgb(230, 204, 207)",
+        "line-color": "hsla(195, 47%, 62%, 0.26)",
         "line-width": {
           "base": 1.3,
           "stops": [
@@ -1247,7 +1124,7 @@
         "line-join": "round"
       },
       "paint": {
-        "line-color": "rgb(230, 204, 207)",
+        "line-color": "hsl(214, 63%, 76%)",
         "line-width": {
           "base": 1.1,
           "stops": [
@@ -1274,7 +1151,7 @@
             ]
           ]
         },
-        "line-opacity": 1
+        "line-opacity": 0.56
       }
     },
     {
@@ -1320,10 +1197,11 @@
         "text-field": "{name_en}"
       },
       "paint": {
-        "text-color": "rgb(117, 129, 145)",
-        "text-halo-color": "rgb(242,243,240)",
+        "text-color": "hsl(195, 37%, 73%)",
+        "text-halo-color": "hsla(228, 60%, 21%, 0.7)",
         "text-halo-width": 1,
-        "text-halo-blur": 1
+        "text-halo-blur": 1,
+        "text-opacity": 0.6
       }
     },
     {
@@ -1366,8 +1244,8 @@
         "text-field": "{name_en}"
       },
       "paint": {
-        "text-color": "rgb(117, 129, 145)",
-        "text-halo-color": "rgb(242,243,240)",
+        "text-color": "hsl(195, 41%, 49%)",
+        "text-halo-color": "hsla(228, 60%, 21%, 0.7)",
         "text-halo-width": 1,
         "text-halo-blur": 1
       }
@@ -1413,8 +1291,8 @@
         "text-field": "{name_en}"
       },
       "paint": {
-        "text-color": "rgb(117, 129, 145)",
-        "text-halo-color": "rgb(242,243,240)",
+        "text-color": "hsl(195, 41%, 49%)",
+        "text-halo-color": "hsla(228, 60%, 21%, 0.7)",
         "text-halo-width": 1,
         "text-halo-blur": 1,
         "icon-opacity": 0.7
@@ -1452,7 +1330,7 @@
               "circle-11"
             ],
             [
-              8,
+              9,
               ""
             ]
           ]
@@ -1486,8 +1364,8 @@
         "text-field": "{name_en}"
       },
       "paint": {
-        "text-color": "rgb(117, 129, 145)",
-        "text-halo-color": "rgb(242,243,240)",
+        "text-color": "hsl(195, 25%, 76%)",
+        "text-halo-color": "hsla(228, 60%, 21%, 0.7)",
         "text-halo-width": 1,
         "text-halo-blur": 1,
         "icon-opacity": 0.7
@@ -1512,11 +1390,6 @@
         [
           "all",
           [
-            "!=",
-            "capital",
-            2
-          ],
-          [
             "==",
             "class",
             "city"
@@ -1530,19 +1403,6 @@
       ],
       "layout": {
         "text-size": 10,
-        "icon-image": {
-          "base": 1,
-          "stops": [
-            [
-              0,
-              "circle-11"
-            ],
-            [
-              8,
-              ""
-            ]
-          ]
-        },
         "text-transform": "uppercase",
         "text-font": [
           "Metropolis Regular",
@@ -1572,89 +1432,8 @@
         "text-field": "{name_en}"
       },
       "paint": {
-        "text-color": "rgb(117, 129, 145)",
-        "text-halo-color": "rgb(242,243,240)",
-        "text-halo-width": 1,
-        "text-halo-blur": 1,
-        "icon-opacity": 0.7
-      }
-    },
-    {
-      "id": "place_capital",
-      "type": "symbol",
-      "metadata": {
-        "mapbox:group": "101da9f13b64a08fa4b6ac1168e89e5f"
-      },
-      "source": "openmaptiles",
-      "source-layer": "place",
-      "maxzoom": 12,
-      "filter": [
-        "all",
-        [
-          "==",
-          "$type",
-          "Point"
-        ],
-        [
-          "all",
-          [
-            "==",
-            "capital",
-            2
-          ],
-          [
-            "==",
-            "class",
-            "city"
-          ]
-        ]
-      ],
-      "layout": {
-        "text-size": 14,
-        "icon-image": {
-          "base": 1,
-          "stops": [
-            [
-              0,
-              "star-11"
-            ],
-            [
-              8,
-              ""
-            ]
-          ]
-        },
-        "text-transform": "uppercase",
-        "text-font": [
-          "Metropolis Regular",
-          "Klokantech Noto Sans Regular",
-          "Klokantech Noto Sans CJK Regular"
-        ],
-        "text-justify": "left",
-        "visibility": "visible",
-        "text-offset": [
-          0.5,
-          0.2
-        ],
-        "icon-size": 1,
-        "text-anchor": {
-          "base": 1,
-          "stops": [
-            [
-              0,
-              "left"
-            ],
-            [
-              8,
-              "center"
-            ]
-          ]
-        },
-        "text-field": "{name}"
-      },
-      "paint": {
-        "text-color": "rgb(117, 129, 145)",
-        "text-halo-color": "rgb(242,243,240)",
+        "text-color": "hsl(195, 25%, 76%)",
+        "text-halo-color": "hsla(228, 60%, 21%, 0.7)",
         "text-halo-width": 1,
         "text-halo-blur": 1,
         "icon-opacity": 0.7
@@ -1679,11 +1458,6 @@
         [
           "all",
           [
-            "!=",
-            "capital",
-            2
-          ],
-          [
             "<=",
             "rank",
             3
@@ -1697,19 +1471,6 @@
       ],
       "layout": {
         "text-size": 14,
-        "icon-image": {
-          "base": 1,
-          "stops": [
-            [
-              0,
-              "circle-11"
-            ],
-            [
-              8,
-              ""
-            ]
-          ]
-        },
         "text-transform": "uppercase",
         "text-font": [
           "Metropolis Regular",
@@ -1739,8 +1500,8 @@
         "text-field": "{name}"
       },
       "paint": {
-        "text-color": "rgb(117, 129, 145)",
-        "text-halo-color": "rgb(242,243,240)",
+        "text-color": "hsl(195, 25%, 76%)",
+        "text-halo-color": "hsla(228, 60%, 21%, 0.7)",
         "text-halo-width": 1,
         "text-halo-blur": 1,
         "icon-opacity": 0.7
@@ -1781,7 +1542,7 @@
       },
       "paint": {
         "text-color": "rgb(113, 129, 144)",
-        "text-halo-color": "rgb(242,243,240)",
+        "text-halo-color": "hsla(228, 60%, 21%, 0.7)",
         "text-halo-width": 1,
         "text-halo-blur": 1
       }
@@ -1841,7 +1602,7 @@
       },
       "paint": {
         "text-halo-width": 1.4,
-        "text-halo-color": "rgba(236,236,234,0.7)",
+        "text-halo-color": "hsla(228, 60%, 21%, 0.7)",
         "text-color": {
           "base": 1,
           "stops": [
@@ -1854,7 +1615,8 @@
               "rgb(153, 153, 153)"
             ]
           ]
-        }
+        },
+        "text-opacity": 1
       }
     },
     {
@@ -1917,7 +1679,7 @@
       },
       "paint": {
         "text-halo-width": 1.4,
-        "text-halo-color": "rgba(236,236,234,0.7)",
+        "text-halo-color": "hsla(228, 60%, 21%, 0.7)",
         "text-color": {
           "base": 1,
           "stops": [
@@ -1930,9 +1692,83 @@
               "rgb(153, 153, 153)"
             ]
           ]
+        },
+        "text-opacity": 1
+      }
+    },
+    {
+      "id": "place_continent",
+      "type": "symbol",
+      "metadata": {
+        "mapbox:group": "101da9f13b64a08fa4b6ac1168e89e5f"
+      },
+      "source": "openmaptiles",
+      "source-layer": "place",
+      "maxzoom": 6,
+      "filter": [
+        "all",
+        [
+          "==",
+          "$type",
+          "Point"
+        ],
+        [
+          "==",
+          "class",
+          "continent"
+        ]
+      ],
+      "layout": {
+        "visibility": "visible",
+        "text-field": "{name_en}",
+        "text-font": [
+          "Metropolis Regular",
+          "Klokantech Noto Sans Regular",
+          "Klokantech Noto Sans CJK Regular"
+        ],
+        "text-transform": "uppercase",
+        "text-size": {
+          "base": 1.4,
+          "stops": [
+            [
+              0,
+              10
+            ],
+            [
+              3,
+              12
+            ],
+            [
+              4,
+              14
+            ]
+          ]
+        },
+        "text-anchor": "center"
+      },
+      "paint": {
+        "text-halo-width": 1.4,
+        "text-halo-color": "hsla(228, 60%, 21%, 0.7)",
+        "text-color": "hsl(0, 0%, 100%)",
+        "text-opacity": {
+          "base": 1,
+          "stops": [
+            [
+              0,
+              0.6
+            ],
+            [
+              3,
+              0
+            ]
+          ]
         }
       }
     }
   ],
-  "id": "ciwf3o3u2008z2pmq7pmvm6xq"
+  "created": "2016-12-12T09:42:38.138Z",
+  "id": "ciwlw4z7800092qmvzlut41tx",
+  "modified": "2016-12-13T11:50:57.366Z",
+  "owner": "openmaptiles",
+  "draft": false
 }

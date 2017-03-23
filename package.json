@@ -1,0 +1,22 @@
+{
+  "name": "vectortile-samples",
+  "version": "1.0.0",
+  "description": "http://fonts.cat/vectortile-samples/",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/oscarfonts/vectortile-samples.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/oscarfonts/vectortile-samples/issues"
+  },
+  "homepage": "https://github.com/oscarfonts/vectortile-samples#readme",
+  "dependencies": {
+    "@mapbox/spritezero-cli": "^2.0.0"
+  }
+}

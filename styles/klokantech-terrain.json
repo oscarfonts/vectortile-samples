@@ -1,16 +1,33 @@
 {
-  "id": "klokantech-3d",
   "version": 8,
-  "name": "Klokantech 3D",
+  "name": "Klokantech Terrain",
   "metadata": {
     "mapbox:autocomposite": false,
+    "mapbox:type": "template",
     "maputnik:renderer": "mbgljs",
-    "openmaptiles:version": "3.x"
+    "openmaptiles:version": "3.x",
+    "openmaptiles:mapbox:owner": "openmaptiles",
+    "openmaptiles:mapbox:source:url": "mapbox://openmaptiles.4qljc88t"
   },
+  "center": [
+    2.15,
+    41.38
+  ],
+  "zoom": 12,
+  "bearing": -45,
+  "pitch": 0,
   "sources": {
     "openmaptiles": {
-      "url": "http://demo.fonts.cat:8001/data/openmaptiles.json",
-      "type": "vector"
+      "type": "vector",
+      "url": "http://demo.fonts.cat:8001/data/openmaptiles.json"
+    },
+    "hillshading": {
+      "type": "raster",
+      "url": "https://klokantech.tilehosting.com/data/hillshades.json?key=tXme5cuqgrCqdPoZHqyn"
+    },
+    "contours": {
+      "type": "vector",
+      "url": "https://klokantech.tilehosting.com/data/contours.json?key=tXme5cuqgrCqdPoZHqyn"
     }
   },
   "glyphs": "https://free.tilehosting.com/fonts/{fontstack}/{range}.pbf?key={key}",
@@ -64,16 +81,6 @@
       }
     },
     {
-      "id": "park",
-      "type": "fill",
-      "source": "openmaptiles",
-      "source-layer": "park",
-      "paint": {
-        "fill-color": "rgba(192, 216, 151, 0.53)",
-        "fill-opacity": 1
-      }
-    },
-    {
       "id": "landcover_wood",
       "type": "fill",
       "source": "openmaptiles",
@@ -101,17 +108,13 @@
       }
     },
     {
-      "id": "water",
+      "id": "park",
       "type": "fill",
       "source": "openmaptiles",
-      "source-layer": "water",
-      "filter": [
-        "==",
-        "$type",
-        "Polygon"
-      ],
+      "source-layer": "park",
       "paint": {
-        "fill-color": "hsl(205, 56%, 73%)"
+        "fill-color": "rgba(192, 216, 151, 0.53)",
+        "fill-opacity": 1
       }
     },
     {
@@ -163,6 +166,35 @@
       }
     },
     {
+      "id": "hillshading",
+      "type": "raster",
+      "source": "hillshading",
+      "layout": {
+        "visibility": "visible"
+      },
+      "paint": {
+        "raster-opacity": {
+          "base": 0.5,
+          "stops": [
+            [
+              3,
+              0
+            ],
+            [
+              5,
+              0.15
+            ],
+            [
+              12,
+              0.15
+            ]
+          ]
+        },
+        "raster-fade-duration": 300,
+        "raster-contrast": 0
+      }
+    },
+    {
       "id": "landuse",
       "type": "fill",
       "source": "openmaptiles",
@@ -211,14 +243,144 @@
       "type": "line",
       "source": "openmaptiles",
       "source-layer": "park",
+      "layout": {},
       "paint": {
         "line-color": "rgba(159, 183, 118, 0.69)",
         "line-dasharray": [
           0.5,
           1
         ]
+      }
+    },
+    {
+      "id": "contour_label",
+      "type": "symbol",
+      "metadata": {},
+      "source": "contours",
+      "source-layer": "contour",
+      "interactive": true,
+      "filter": [
+        "all",
+        [
+          "==",
+          "$type",
+          "LineString"
+        ],
+        [
+          "in",
+          "nth_line",
+          10,
+          5
+        ],
+        [
+          ">",
+          "height",
+          0
+        ]
+      ],
+      "layout": {
+        "text-size": {
+          "base": 1,
+          "stops": [
+            [
+              15,
+              9.5
+            ],
+            [
+              20,
+              12
+            ]
+          ]
+        },
+        "text-allow-overlap": false,
+        "symbol-avoid-edges": true,
+        "text-ignore-placement": false,
+        "symbol-placement": "line",
+        "text-padding": 10,
+        "text-rotation-alignment": "map",
+        "text-field": "{height} m",
+        "text-font": [
+          "Klokantech Noto Sans Regular",
+          "Klokantech Noto Sans CJK Regular"
+        ]
       },
-      "layout": {}
+      "paint": {
+        "text-color": "hsl(0, 0%, 37%)",
+        "text-halo-color": "hsla(0, 0%, 100%, 0.5)",
+        "text-halo-width": 1.5
+      }
+    },
+    {
+      "id": "contour_index",
+      "type": "line",
+      "source": "contours",
+      "source-layer": "contour",
+      "interactive": true,
+      "filter": [
+        "all",
+        [
+          ">",
+          "height",
+          0
+        ],
+        [
+          "in",
+          "nth_line",
+          10,
+          5
+        ]
+      ],
+      "layout": {
+        "visibility": "visible"
+      },
+      "paint": {
+        "line-color": "hsl(0, 1%, 58%)",
+        "line-opacity": 0.4,
+        "line-width": 1.1
+      }
+    },
+    {
+      "id": "contour",
+      "type": "line",
+      "source": "contours",
+      "source-layer": "contour",
+      "interactive": true,
+      "filter": [
+        "all",
+        [
+          "!in",
+          "nth_line",
+          10,
+          5
+        ],
+        [
+          ">",
+          "height",
+          0
+        ]
+      ],
+      "layout": {
+        "visibility": "visible"
+      },
+      "paint": {
+        "line-color": "hsl(0, 1%, 58%)",
+        "line-opacity": 0.3,
+        "line-width": 0.6
+      }
+    },
+    {
+      "id": "water",
+      "type": "fill",
+      "source": "openmaptiles",
+      "source-layer": "water",
+      "filter": [
+        "==",
+        "$type",
+        "Polygon"
+      ],
+      "paint": {
+        "fill-color": "hsl(205, 56%, 73%)"
+      }
     },
     {
       "id": "waterway",
@@ -246,6 +408,54 @@
           ]
         },
         "line-opacity": 1
+      }
+    },
+    {
+      "id": "building",
+      "type": "fill",
+      "source": "openmaptiles",
+      "source-layer": "building",
+      "paint": {
+        "fill-color": "hsl(39, 41%, 86%)",
+        "fill-outline-color": "hsl(36, 45%, 80%)",
+        "fill-opacity": {
+          "base": 1,
+          "stops": [
+            [
+              13,
+              0.6
+            ],
+            [
+              14,
+              1
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "id": "housenumber",
+      "type": "symbol",
+      "source": "openmaptiles",
+      "source-layer": "housenumber",
+      "minzoom": 17,
+      "filter": [
+        "==",
+        "$type",
+        "Point"
+      ],
+      "layout": {
+        "text-field": "{housenumber}",
+        "text-size": 10,
+        "text-font": [
+          "Klokantech Noto Sans Regular",
+          "Klokantech Noto Sans CJK Regular"
+        ]
+      },
+      "paint": {
+        "text-color": "hsla(0, 14%, 57%, 0.51)",
+        "text-halo-color": "hsl(39, 41%, 86%)",
+        "text-halo-width": 0.5
       }
     },
     {
@@ -870,6 +1080,48 @@
       }
     },
     {
+      "id": "poi_label",
+      "type": "symbol",
+      "source": "openmaptiles",
+      "source-layer": "poi",
+      "minzoom": 5,
+      "filter": [
+        "all",
+        [
+          "==",
+          "$type",
+          "Point"
+        ],
+        [
+          "==",
+          "rank",
+          1
+        ]
+      ],
+      "layout": {
+        "text-size": 11,
+        "text-font": [
+          "Klokantech Noto Sans Regular",
+          "Klokantech Noto Sans CJK Regular"
+        ],
+        "visibility": "visible",
+        "text-offset": [
+          0,
+          0.5
+        ],
+        "icon-size": 1,
+        "text-anchor": "top",
+        "text-field": "{name}",
+        "text-max-width": 8
+      },
+      "paint": {
+        "text-color": "#666",
+        "text-halo-width": 1,
+        "text-halo-color": "rgba(255,255,255,0.75)",
+        "text-halo-blur": 1
+      }
+    },
+    {
       "id": "road_major_label",
       "type": "symbol",
       "source": "openmaptiles",
@@ -883,7 +1135,8 @@
         "symbol-placement": "line",
         "text-field": "{name}",
         "text-font": [
-          "Klokantech Noto Sans Regular"
+          "Klokantech Noto Sans Regular",
+          "Klokantech Noto Sans CJK Regular"
         ],
         "text-transform": "uppercase",
         "text-letter-spacing": 0.1,
@@ -906,24 +1159,6 @@
         "text-color": "#000",
         "text-halo-color": "hsl(0, 0%, 100%)",
         "text-halo-width": 2
-      }
-    },
-    {
-      "id": "building-3d",
-      "type": "fill-extrusion",
-      "source": "openmaptiles",
-      "source-layer": "building",
-      "paint": {
-        "fill-extrusion-color": "hsl(39, 41%, 86%)",
-        "fill-extrusion-height": {
-          "property": "render_height",
-          "type": "identity"
-        },
-        "fill-extrusion-base": {
-          "property": "render_min_height",
-          "type": "identity"
-        },
-        "fill-extrusion-opacity": 0.6
       }
     },
     {
@@ -951,7 +1186,8 @@
       "layout": {
         "text-field": "{name_en}",
         "text-font": [
-          "Klokantech Noto Sans Regular"
+          "Klokantech Noto Sans Regular",
+          "Klokantech Noto Sans CJK Regular"
         ],
         "text-max-width": 6,
         "text-size": {
@@ -998,7 +1234,8 @@
       "layout": {
         "text-field": "{name_en}",
         "text-font": [
-          "Klokantech Noto Sans Regular"
+          "Klokantech Noto Sans Regular",
+          "Klokantech Noto Sans CJK Regular"
         ],
         "text-max-width": 10,
         "text-size": {
@@ -1043,7 +1280,8 @@
       "layout": {
         "text-field": "{name}",
         "text-font": [
-          "Klokantech Noto Sans Bold"
+          "Klokantech Noto Sans Bold",
+          "Klokantech Noto Sans CJK Bold"
         ],
         "text-max-width": 10,
         "text-size": {
@@ -1066,5 +1304,6 @@
         "text-halo-blur": 0
       }
     }
-  ]
+  ],
+  "id": "ciwf4zbsv007y2pmt2rspc1dc"
 }

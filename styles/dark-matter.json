@@ -22,11 +22,11 @@
     "openmaptiles:mapbox:source:url": "mapbox://openmaptiles.4qljc88t"
   },
   "center": [
-    20.745027854803,
-    50.39944115761509
+    2.15,
+    41.38
   ],
-  "zoom": 3.8053494517746405,
-  "bearing": 0,
+  "zoom": 12,
+  "bearing": -45,
   "pitch": 0,
   "sources": {
     "openmaptiles": {
