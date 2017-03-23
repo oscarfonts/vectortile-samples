@@ -27,9 +27,9 @@ https://upload.wikimedia.org/wikipedia/commons/3/31/T3.svg T3
 https://upload.wikimedia.org/wikipedia/commons/1/19/T4.svg T4
 https://upload.wikimedia.org/wikipedia/commons/b/ba/T5.svg T5
 https://upload.wikimedia.org/wikipedia/commons/f/fe/T6.svg T6
-https://upload.wikimedia.org/wikipedia/commons/7/7c/Fmontjuic.svg funicular_montjuic
-https://upload.wikimedia.org/wikipedia/commons/2/22/Fvallvidrera.svg funicular_vallvidrera
-https://upload.wikimedia.org/wikipedia/commons/3/3d/Tramvia_Blau.svg tramvia_blau
+https://upload.wikimedia.org/wikipedia/commons/7/7c/Fmontjuic.svg FM
+https://upload.wikimedia.org/wikipedia/commons/2/22/Fvallvidrera.svg FV
+https://upload.wikimedia.org/wikipedia/commons/3/3d/Tramvia_Blau.svg TB
 https://upload.wikimedia.org/wikipedia/commons/a/ae/FGC.svg FGC
 https://upload.wikimedia.org/wikipedia/commons/3/33/FGCg.svg FGC_gris
 https://upload.wikimedia.org/wikipedia/commons/e/e3/S1_barcelona.svg S1

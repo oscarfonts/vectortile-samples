@@ -67,7 +67,7 @@
             ['FB712B', '#FB712B']
           ]
         },
-        "line-width": 5
+        "line-width": 4
       }
     }
   },{
@@ -77,16 +77,18 @@
       "type": "symbol",
       "source": "EST_LINIA_CENTRAL",
       "layout": {
-        "icon-image": "{icon}-15",
+        "icon-image": "{PICTO}",
+        "icon-size": 0.28,
         "text-field": "{NOM_ESTACIO}",
         "text-font": ["Open Sans Semibold", "Arial Unicode MS Bold"],
-        "text-offset": [0, 0.6],
-        "text-anchor": "top"
+        "text-offset": [0.8, 0],
+        "text-anchor": "left",
+        "text-size": 14
       },
       "paint": {
-
+        "text-halo-width": 2,
+        "text-halo-color": "#FFFFFF"
       }
-
     }
   }];
 
@@ -108,15 +110,14 @@
   }
 
   map.on('load', function () {
-    for(var i in overlays) {
-      var layer = overlays[i];
+    overlays.map(function(layer) {
       fetch('data/'+layer.name+'.geojson').then(function (response) {
         response.json().then(function (data) {
           layer.data = data;
-         addLayer(layer);
+          addLayer(layer);
         });
       });
-    }
+    });
 
     fetch('styles/index.json').then(function (response) {
       response.json().then(function (styles) {
