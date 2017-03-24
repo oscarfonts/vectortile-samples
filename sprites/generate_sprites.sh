@@ -9,3 +9,4 @@
 #done
 
 ../node_modules/@mapbox/spritezero-cli/bin/spritezero logos logos/
+../node_modules/@mapbox/spritezero-cli/bin/spritezero --retina logos@2x logos/
