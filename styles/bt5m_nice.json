@@ -26,7 +26,12 @@
     },
     "hillshading": {
       "type": "raster",
-      "url": "https://klokantech.tilehosting.com/data/hillshades.json?key=tXme5cuqgrCqdPoZHqyn"
+      "tiles": [
+        "http://geoserveis.icc.cat/icgc_ombres_muntanya/noutm/wmts/ombres_tfosc/GRID3857/{z}/{x}/{y}.jpeg"
+      ],
+      "maxzoom": 14,
+      "id": "hillshades",
+      "attribution": "<a href=\"http://www.icgc.cat\" target=\"_blank\">CC-by ICGC</a>"
     }
   },
   "sprite": "http://fonts.cat/vectortile-samples/sprites/logos",
@@ -40,23 +45,7 @@
         "visibility": "visible"
       },
       "paint": {
-        "raster-opacity": {
-          "base": 0.5,
-          "stops": [
-            [
-              3,
-              0
-            ],
-            [
-              5,
-              0.15
-            ],
-            [
-              12,
-              0.15
-            ]
-          ]
-        },
+        "raster-opacity": 0.5,
         "raster-fade-duration": 300,
         "raster-contrast": 0
       }
