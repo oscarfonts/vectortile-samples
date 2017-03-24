@@ -11,7 +11,7 @@
     "bt5m": {
       "type": "vector",
       "tiles": [
-        "http://betaserver.icgc.cat/tileserver3/tileserver.php/bt5m_stpropi/{z}/{x}/{y}.pbf"
+        "http://demo.fonts.cat/betaserver/tileserver3/tileserver.php/bt5m_stpropi/{z}/{x}/{y}.pbf"
       ],
       "maxzoom": 16,
       "attribution": "Mapa &copy; <a href='http://www.icgc.cat'>Institut Cartogràfic i Geològic de Catalunya</a>"
@@ -19,29 +19,47 @@
     "toponimia": {
       "type": "vector",
       "tiles": [
-        "http://betaserver.icgc.cat/tileserver3/tileserver.php/redtopo/{z}/{x}/{y}.pbf"
+        "http://demo.fonts.cat/betaserver/tileserver3/tileserver.php/redtopo/{z}/{x}/{y}.pbf"
       ],
       "maxzoom": 16,
       "attribution": "Mapa &copy; <a href='http://www.icgc.cat'>Institut Cartogràfic i Geològic de Catalunya</a>"
     },
-    "normals": {
+    "hillshading": {
       "type": "raster",
-      "tiles": [
-        "http://betaserver.icgc.cat/tileserver3/tileserver.php?/norm2x2/{z}/{x}/{y}.png"
-      ],
-      "maxzoom": 18,
-      "attribution": "Mapa &copy; <a href='http://www.icgc.cat'>Institut Cartogràfic i Geològic de Catalunya</a>"
+      "url": "https://klokantech.tilehosting.com/data/hillshades.json?key=tXme5cuqgrCqdPoZHqyn"
     }
   },
   "sprite": "http://fonts.cat/vectortile-samples/sprites/logos",
-  "glyphs": "http://betaserver.icgc.cat/glyphs/{fontstack}/{range}.pbf",
+  "glyphs": "https://free.tilehosting.com/fonts/{fontstack}/{range}.pbf?key={key}",
   "layers": [
     {
-      "id": "normalMaps",
+      "id": "hillshading",
       "type": "raster",
-      "source": "normals",
-      "minzoom": 0,
-      "maxzoom": 22
+      "source": "hillshading",
+      "layout": {
+        "visibility": "visible"
+      },
+      "paint": {
+        "raster-opacity": {
+          "base": 0.5,
+          "stops": [
+            [
+              3,
+              0
+            ],
+            [
+              5,
+              0.15
+            ],
+            [
+              12,
+              0.15
+            ]
+          ]
+        },
+        "raster-fade-duration": 300,
+        "raster-contrast": 0
+      }
     },
     {
       "interactive": true,
