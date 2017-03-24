@@ -93,10 +93,7 @@
   }];
 
   function addOverlays() {
-    for(var i in overlays) {
-      var layer = overlays[i];
-      addLayer(layer);
-    }
+    overlays.map(addLayer);
   }
 
   function addLayer(layer) {
@@ -110,14 +107,16 @@
   }
 
   map.on('load', function () {
-    overlays.map(function(layer) {
-      fetch('data/'+layer.name+'.geojson').then(function (response) {
-        response.json().then(function (data) {
+    var getLayerData = function(layer) {
+      return fetch('data/'+layer.name+'.geojson').then(function (response) {
+        return response.json().then(function (data) {
           layer.data = data;
-          addLayer(layer);
+          return layer;
         });
       });
-    });
+    };
+
+    Promise.all(overlays.map(getLayerData)).then(addOverlays);
 
     fetch('styles/index.json').then(function (response) {
       response.json().then(function (styles) {
