@@ -22,6 +22,7 @@
       "url": "http://demo.fonts.cat:8001/data/openmaptiles.json"
     }
   },
+  "sprite": "http://fonts.cat/vectortile-samples/sprites/logos",
   "glyphs": "https://free.tilehosting.com/fonts/{fontstack}/{range}.pbf?key={key}",
   "layers": [
     {

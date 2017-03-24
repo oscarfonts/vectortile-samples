@@ -20,6 +20,7 @@
       "type": "vector"
     }
   },
+  "sprite": "http://fonts.cat/vectortile-samples/sprites/logos",
   "glyphs": "https://free.tilehosting.com/fonts/{fontstack}/{range}.pbf?key={key}",
   "layers": [
     {

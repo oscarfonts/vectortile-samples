@@ -33,7 +33,7 @@
       "attribution": "Mapa &copy; <a href='http://www.icgc.cat'>Institut Cartogràfic i Geològic de Catalunya</a>"
     }
   },
-  "sprite": "http://betaserver.icgc.cat/vectortiles/sprites/maki",
+  "sprite": "http://fonts.cat/vectortile-samples/sprites/logos",
   "glyphs": "http://betaserver.icgc.cat/glyphs/{fontstack}/{range}.pbf",
   "layers": [
     {
